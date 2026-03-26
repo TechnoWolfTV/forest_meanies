@@ -22,6 +22,9 @@ local DAYLIGHT_BURN_DAMAGE = 8
 local BURN_FIRE_GAIN = 0.6
 local BURN_ROAR_GAIN = 1.0
 
+local WIPE_TIME = 0.35
+local WIPE_WINDOW = 0.03
+
 local function flat_distance(a, b)
     if not a or not b then return nil end
     local dx = a.x - b.x
@@ -279,6 +282,7 @@ mobs:register_mob("forest_meanies:meanie", {
     do_custom = function(self, dtime)
         self.sound_timer = self.sound_timer or 0
         self.orbit_timer = self.orbit_timer or 0
+        self.wipe_checked = self.wipe_checked or false
         self.meanie_state = self.meanie_state or "orbiting"
         self.roared = self.roared or false
         self.whisper_sound_id = self.whisper_sound_id or nil
@@ -296,6 +300,24 @@ mobs:register_mob("forest_meanies:meanie", {
 
         local pos = self.object:get_pos()
         if not pos then return end
+
+        local tod = minetest.get_timeofday()
+        local in_wipe_window = tod >= WIPE_TIME and tod < (WIPE_TIME + WIPE_WINDOW)
+
+        if in_wipe_window and not self.wipe_checked then
+            self.wipe_checked = true
+
+            if self.meanie_state ~= "burning" then
+                fade_stop_whisper(self)
+                fade_stop_roar(self)
+                stop_burn_fire(self)
+                stop_burn_roar(self)
+                self.object:remove()
+                return
+            end
+        elseif not in_wipe_window then
+            self.wipe_checked = false
+        end
 
         local light = minetest.get_node_light(pos) or 0
         if light >= DAYLIGHT_BURN_LEVEL then
@@ -323,7 +345,6 @@ mobs:register_mob("forest_meanies:meanie", {
                 stop_burn_roar(self)
             end
 
-            -- fast punch animation as pain/flailing
             self.object:set_animation({x = 200, y = 219}, 35, 0, true)
 
             burn_in_daylight(self, dtime, pos)
