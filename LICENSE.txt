@@ -1,0 +1,55 @@
+License of code: MIT
+Media by TechnoWolfTV (CC-by-SA 4.0) unless listed below...
+
+In accordance with GPL requirements to indicate changes to works, all changes
+made to the below listed works are officially made on or after 25 March 2026.
+
+- forest_meanie_roar.ogg
+  - Locations: ./sounds/forest_meanie_roar.ogg
+  - License: "T-rex Calls ; t-rex_calls.mp3" by CaveboyTup (https://opengameart.org/content/t-rex-calls) CC BY (http://creativecommons.org/publicdomain/zero/1.0/)
+  - License: "CC0 Deep Monster Roar ; monster_roar.wav" by trazzz123 (https://opengameart.org/content/cc0-deep-monster-roar) CC BY (http://creativecommons.org/publicdomain/zero/1.0/)
+  - Changes were made to these works
+- forest_meanie_whisper.ogg
+  - Locations: ./sounds/forest_meanie_whisper.ogg
+  - License: "Voices of Madness ; all files within sounds-of-madness-ogg.zip" by eugeneloza (https://opengameart.org/content/voices-of-madness) CC BY (http://creativecommons.org/publicdomain/zero/1.0/)
+  - Changes were made to this work
+- forest_meanie.b3d
+  - Locations: ./models/forest_meanie.b3d
+- Includes:
+	- character.b3d
+	- fire_basic_flame.png
+	- default_cloud.png
+	- fire_fire.1.ogg
+	- fire_fire.2.ogg
+	- fire_fire.3.ogg
+	Sourced from Minetest Game
+	License: CC BY-SA 3.0 (http://creativecommons.org/licenses/by-sa/3.0/)
+  - Changes were made to the "character.b3d" work, simply renamed to "forest_meanie.b3d"
+- forest_meanie.png
+  - Locations: ./textures/forest_meanie.png
+  - License: "Minetest Skins Pack 1 ; Skin_21.png" by isaiah658 (https://opengameart.org/content/minetest-skins-pack-1) CC BY (http://creativecommons.org/publicdomain/zero/1.0/)
+  - Changes were made to this work
+
+###############################################################################
+
+MIT License
+Copyright (c) 2026 TechnoWolfTV
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
