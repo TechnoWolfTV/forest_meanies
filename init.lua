@@ -32,6 +32,11 @@ local function flat_distance(a, b)
     return math.sqrt(dx * dx + dz * dz)
 end
 
+local function true_distance(a, b)
+    if not a or not b then return nil end
+    return vector.distance(a, b)
+end
+
 local function move_toward(self, pos, speed)
     local obj = self.object
     if not obj then return end
@@ -114,8 +119,12 @@ local function play_burn_roar(self)
     })
 end
 
-local function do_melee_damage(self, target, dist, dtime)
+local function do_melee_damage(self, target, dtime)
     if not self.object or not target or not target:is_player() then return end
+
+    local my_pos = self.object:get_pos()
+    local target_pos = target:get_pos()
+    local dist = true_distance(my_pos, target_pos)
 
     self.attack_cooldown = self.attack_cooldown or 0
     self.attack_cooldown = math.max(0, self.attack_cooldown - dtime)
@@ -237,13 +246,13 @@ mobs:register_mob("forest_meanies:meanie", {
     hp_max = 120,
     armor = 80,
 
-    collisionbox = {-0.4, 0.0, -0.4, 0.4, 2.0, 0.4},
-    selectionbox = {-0.4, 0.0, -0.4, 0.4, 2.0, 0.4},
+    collisionbox = {-0.35, 0.0, -0.35, 0.35, 1.9, 0.35},
+    selectionbox = {-0.35, 0.0, -0.35, 0.35, 1.9, 0.35},
 
     visual = "mesh",
     mesh = "forest_meanie.b3d",
     textures = {{"forest_meanie.png"}},
-    visual_size = {x = 2, y = 2},
+    visual_size = {x = 1.08, y = 1.08},
     glow = 3,
 
     makes_footstep_sound = true,
@@ -442,7 +451,7 @@ mobs:register_mob("forest_meanies:meanie", {
                 stop_horizontal(self)
             end
 
-            do_melee_damage(self, target, dist, dtime)
+            do_melee_damage(self, target, dtime)
 
         elseif self.meanie_state == "searching" and self.last_seen then
             self.attack = nil
@@ -503,7 +512,7 @@ mobs:register_mob("forest_meanies:meanie", {
         self.orbit_target = get_orbit_target(self)
 
         self.object:set_properties({
-            visual_size = {x = 2, y = 2}
+            visual_size = {x = 1.08, y = 1.08}
         })
     end,
 
@@ -522,8 +531,8 @@ mobs:spawn({
     min_light = 0,
     max_light = 7,
     interval = 30,
-    chance = 15000,
-    active_object_count = 2,
+    chance = 9000,
+    active_object_count = 8,
     min_height = 1,
     max_height = 200,
 })
