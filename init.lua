@@ -22,8 +22,8 @@ local DAYLIGHT_BURN_DAMAGE = 8
 local BURN_FIRE_GAIN = 0.6
 local BURN_ROAR_GAIN = 1.0
 
-local WIPE_TIME = 0.35
-local WIPE_WINDOW = 0.03
+local WIPE_TIME = 0.292
+local WIPE_WINDOW = 0.007
 
 local function flat_distance(a, b)
     if not a or not b then return nil end
@@ -531,7 +531,7 @@ mobs:spawn({
     min_light = 0,
     max_light = 7,
     interval = 30,
-    chance = 9000,
+    chance = 7000,
     active_object_count = 8,
     min_height = 1,
     max_height = 200,
